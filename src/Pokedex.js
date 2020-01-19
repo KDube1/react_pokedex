@@ -4,7 +4,8 @@ import { PokemonType } from "./PokemonType";
 export function Pokedex() {
   const [selectedPokemon, setSelectedPokemon] = useState(undefined);
   const searchBox = useRef(null);
-  async function getPokemonInfo(name) {
+    const moveList = undefined;
+        async function getPokemonInfo(name) {
     const URL = `https://pokeapi.co/api/v2/pokemon/${name.toLowerCase()}`;
     const response = await fetch(URL);
     if (!response.ok) {
@@ -26,6 +27,7 @@ export function Pokedex() {
             <PokemonType type={selectedPokemon.types[1].type.name} />
           )}
           <img src={selectedPokemon.sprites.front_default} alt="sprite" />
+
         </div>
       )}
 
@@ -34,7 +36,7 @@ export function Pokedex() {
       <button onClick={() => getPokemonInfo(searchBox.current.value)}>
         Search
       </button>
-      <ul />
+
     </div>
   );
 }
